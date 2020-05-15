@@ -1,15 +1,15 @@
 class CocktailsController < ApplicationController
-
   def index
     @cocktails = Cocktail.all
   end
 
   def show
     @cocktail = Cocktail.find(params[:id])
+    @dose = Dose.new
   end
 
   def new
-    @cocktail = Cocktail.new # needed to instantiate the form_for
+    @cocktail = Cocktail.new
   end
 
   def create
@@ -17,12 +17,8 @@ class CocktailsController < ApplicationController
     if @cocktail.save
       redirect_to cocktail_path(@cocktail)
     else
-      render "new"
+      render 'new'
     end
-  end
-
-  def edit
-    @cocktail = Cocktail.find(params[:id])
   end
 
   private
