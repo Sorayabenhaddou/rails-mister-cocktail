@@ -8,13 +8,13 @@ Rails.application.routes.draw do
 
    # get "doses", to: "doses#index"
    # get "doses/new", to: "doses#new"
-   # get "doses/:id", to: "doses#show", as: :review
+   #get "doses/:id", to: "doses#show", as: :dose
    # post "dose", to: "dose#create"
-   # get "doses/:id/edit", to: "doses#edit"
-   # patch "dose/:id", to: "dose#update"
+   #get "doses/:id/edit", to: "doses#edit"
 
-  resources :cocktails do
-    resources :doses, only: [:new, :create, :update]
+   # patch "dose/:id", to: "dose#update"
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :cocktails, only: [ :index, :show, :new, :create] do
+    resources :doses, only: [ :new, :create, :show, :destroy ]
   end
-   resources :doses, only: [:destroy]
 end
